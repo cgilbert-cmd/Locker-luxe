@@ -1,1 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locker Luxe | Premium Lifestyle Solutions</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cream: '#FAFAF7',
+                            charcoal: '#302F31',
+                            shield: '#98959F',
+                            light: '#F0EFEA'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for an elegant feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAFAF7; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #98959F; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #302F31; 
+        }
+        
+        .toast-enter {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        .toast-enter-active {
+            transform: translateY(0);
+            opacity: 1;
+            transition: all 0.3s ease-out;
+        }
+        .toast-exit {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast-exit-active {
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all 0.3s ease-in;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-charcoal font-sans antialiased selection:bg-brand-shield selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-brand-cream/90 backdrop-blur-md border-b border-brand-shield/20 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <!-- Uses the exact filename uploaded. Has a fallback if not found. -->
+                    <img src="Screenshot 2026-04-20 at 9.24.47 AM.jpg" 
+                         alt="Locker Luxe" 
+                         class="h-20 w-auto object-contain mix-blend-multiply"
+                         onerror="this.src='https://placehold.co/300x120/FAFAF7/302F31?text=LOCKER+LUXE&font=playfair-display'">
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-sm tracking-widest uppercase hover:text-brand-shield transition-colors">About</a>
+                    <a href="#subscriptions" class="text-sm tracking-widest uppercase hover:text-brand-shield transition-colors">Subscriptions</a>
+                    <a href="#tools" class="text-sm tracking-widest uppercase hover:text-brand-shield transition-colors">Monthly Tools</a>
+                    <a href="#at-home" class="text-sm tracking-widest uppercase hover:text-brand-shield transition-colors">At-Home Services</a>
+                    <button onclick="showToast('Shopping cart opened')" class="text-brand-charcoal hover:text-brand-shield transition-colors">
+                        <i class="ph ph-shopping-bag text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-charcoal focus:outline-none">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-cream border-b border-brand-shield/20">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="#about" class="block px-3 py-2 text-base tracking-widest uppercase hover:text-brand-shield">About</a>
+                <a href="#subscriptions" class="block px-3 py-2 text-base tracking-widest uppercase hover:text-brand-shield">Subscriptions</a>
+                <a href="#tools" class="block px-3 py-2 text-base tracking-widest uppercase hover:text-brand-shield">Monthly Tools</a>
+                <a href="#at-home" class="block px-3 py-2 text-base tracking-widest uppercase hover:text-brand-shield">At-Home Services</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="text-brand-shield tracking-[0.2em] text-sm uppercase font-semibold mb-4 block">Premium Lifestyle Solutions</span>
+            <h1 class="font-serif text-5xl md:text-7xl mb-6 text-brand-charcoal leading-tight">
+                Elevate Your <br> Personal Space.
+            </h1>
+            <p class="mt-4 text-xl text-brand-charcoal/80 max-w-2xl mx-auto font-light mb-10">
+                Experience the ultimate in locker and mudroom organization. We transform cluttered spaces into curated havens of efficiency and style.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#subscriptions" class="bg-brand-charcoal text-brand-cream px-8 py-4 rounded uppercase tracking-widest text-sm hover:bg-brand-shield transition-colors duration-300">
+                    View Subscriptions
+                </a>
+                <a href="#at-home" class="border border-brand-charcoal text-brand-charcoal px-8 py-4 rounded uppercase tracking-widest text-sm hover:bg-brand-charcoal hover:text-brand-cream transition-colors duration-300">
+                    Explore At-Home
+                </a>
+            </div>
+        </div>
+        <!-- Decorative background element -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-brand-shield/10 rounded-full z-0"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-brand-shield/20 rounded-full z-0"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="font-serif text-4xl mb-6">The Locker Luxe Standard</h2>
+                    <p class="text-lg text-brand-charcoal/80 font-light mb-6 leading-relaxed">
+                        Your locker or mudroom is the bridge between your demanding professional life and your personal sanctuary. At Locker Luxe, we believe this space shouldn't be an afterthought—it should be an experience.
+                    </p>
+                    <p class="text-lg text-brand-charcoal/80 font-light mb-6 leading-relaxed">
+                        We provide white-glove organization services, outfitting your space with premium tools and maintaining it through our exclusive subscription models, so you can focus on what truly matters.
+                    </p>
+                </div>
+                <div class="relative h-96 rounded-lg overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1574015974293-817f0ebebb74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Organized elegant locker space with items" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-charcoal/10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscriptions Section -->
+    <section id="subscriptions" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl mb-4">Membership Plans</h2>
+                <p class="text-brand-charcoal/70 max-w-2xl mx-auto">Choose the level of service that fits your lifestyle. Enjoy continuous organization, restocking, and refreshing of your personal space.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Monthly Plan -->
+                <div class="border border-brand-shield/30 p-10 rounded-lg hover:border-brand-shield transition-colors duration-300 flex flex-col bg-white/50 backdrop-blur-sm">
+                    <h3 class="font-serif text-2xl mb-2">The Standard Monthly</h3>
+                    <div class="text-4xl font-light mb-6">$30<span class="text-lg text-brand-charcoal/60">/mo</span></div>
+                    <ul class="space-y-4 mb-10 flex-grow text-brand-charcoal/80">
+                        <li class="flex items-start">
+                            <i class="ph ph-check text-brand-shield mt-1 mr-3"></i>
+                            <span>Once-a-month deep clean & sanitization</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph ph-check text-brand-shield mt-1 mr-3"></i>
+                            <span>Complete organization reset</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph ph-check text-brand-shield mt-1 mr-3"></i>
+                            <span>Restocking of essential personal care items</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph ph-check text-brand-shield mt-1 mr-3"></i>
+                            <span>Seasonal garment rotation</span>
+                        </li>
+                    </ul>
+                    <button onclick="showToast('Monthly Subscription added to cart!')" class="w-full py-4 border border-brand-charcoal text-brand-charcoal hover:bg-brand-charcoal hover:text-brand-cream transition-colors uppercase tracking-widest text-sm rounded">
+                        Select Monthly
+                    </button>
+                </div>
+
+                <!-- Yearly Plan -->
+                <div class="border-2 border-brand-charcoal p-10 rounded-lg relative flex flex-col bg-brand-charcoal text-brand-cream shadow-2xl transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 bg-brand-shield text-white text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-bl-lg rounded-tr-sm">Best Value</div>
+                    <h3 class="font-serif text-2xl mb-2">The Luxe Annual</h3>
+                    <div class="text-4xl font-light mb-6">$300<span class="text-lg text-brand-cream/60">/yr</span></div>
+                    <ul class="space-y-4 mb-10 flex-grow text-brand-cream/80">
+                        <li class="flex items-start">
+                            <i class="ph ph-check text-brand-shield mt-1 mr-3"></i>
+                            <span>All Monthly Plan benefits</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph ph-check text-brand-shield mt-1 mr-3"></i>
+                            <span>Two months free (Save $60)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph ph-check text-brand-shield mt-1 mr-3"></i>
+                            <span>Complimentary Premium Leather Catch-all Tray</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph ph-check text-brand-shield mt-1 mr-3"></i>
+                            <span>Priority scheduling & direct concierge line</span>
+                        </li>
+                    </ul>
+                    <button onclick="showToast('Yearly Subscription added to cart!')" class="w-full py-4 bg-brand-cream text-brand-charcoal hover:bg-brand-shield hover:text-white transition-colors uppercase tracking-widest text-sm rounded font-semibold">
+                        Select Annual
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monthly Tools Shop -->
+    <section id="tools" class="py-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-brand-shield/20 pb-6">
+                <div>
+                    <h2 class="font-serif text-4xl mb-2">Monthly Curated Tools</h2>
+                    <p class="text-brand-charcoal/70">Exclusive organizational hardware, released monthly.</p>
+                </div>
+                <a href="#" class="mt-4 md:mt-0 text-sm tracking-widest uppercase hover:text-brand-shield border-b border-brand-charcoal pb-1 inline-block">View Full Archive</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tool 1 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-80 bg-white rounded-lg overflow-hidden mb-4 flex items-center justify-center p-8 border border-brand-shield/10">
+                        <!-- Placeholder for product image -->
+                        <div class="absolute inset-0 bg-brand-charcoal/5 group-hover:bg-transparent transition-colors duration-300"></div>
+                        <img src="https://images.unsplash.com/photo-1621252179027-94459d278660?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Magnetic Shelf" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-brand-cream/80 backdrop-blur-sm">
+                            <button onclick="showToast('Executive Magnetic Shelf added to cart!')" class="bg-brand-charcoal text-white px-6 py-3 uppercase tracking-widest text-xs rounded hover:bg-brand-shield transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs text-brand-shield uppercase tracking-widest block mb-1">This Month's Drop</span>
+                            <h4 class="font-serif text-xl">The Executive Magnetic Shelf</h4>
+                        </div>
+                        <span class="font-serif text-lg">$125</span>
+                    </div>
+                </div>
+
+                <!-- Tool 2 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-80 bg-white rounded-lg overflow-hidden mb-4 flex items-center justify-center p-8 border border-brand-shield/10">
+                        <div class="absolute inset-0 bg-brand-charcoal/5 group-hover:bg-transparent transition-colors duration-300"></div>
+                        <img src="https://images.unsplash.com/photo-1611244419377-b0a760c19719?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cedar Hangers" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-brand-cream/80 backdrop-blur-sm">
+                            <button onclick="showToast('Aromatic Cedar Hanger Set added to cart!')" class="bg-brand-charcoal text-white px-6 py-3 uppercase tracking-widest text-xs rounded hover:bg-brand-shield transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs text-brand-shield uppercase tracking-widest block mb-1">Bestseller</span>
+                            <h4 class="font-serif text-xl">Aromatic Cedar Hanger Set</h4>
+                        </div>
+                        <span class="font-serif text-lg">$85</span>
+                    </div>
+                </div>
+
+                <!-- Tool 3 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-80 bg-white rounded-lg overflow-hidden mb-4 flex items-center justify-center p-8 border border-brand-shield/10">
+                        <div class="absolute inset-0 bg-brand-charcoal/5 group-hover:bg-transparent transition-colors duration-300"></div>
+                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94801759?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Leather Catchall" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-brand-cream/80 backdrop-blur-sm">
+                            <button onclick="showToast('Monogrammed Valet Tray added to cart!')" class="bg-brand-charcoal text-white px-6 py-3 uppercase tracking-widest text-xs rounded hover:bg-brand-shield transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs text-brand-shield uppercase tracking-widest block mb-1">Customizable</span>
+                            <h4 class="font-serif text-xl">Monogrammed Valet Tray</h4>
+                        </div>
+                        <span class="font-serif text-lg">$65</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
